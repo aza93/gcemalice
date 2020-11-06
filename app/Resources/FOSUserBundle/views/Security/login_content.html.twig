@@ -1,0 +1,103 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{#{% block fos_user_content %}#}
+
+    <body style="background: #1FB3A3 url('{{ asset('images/lock-screen.jpg') }}') no-repeat fixed 0 0 / cover;" onload="startTime()">
+    <div class="lock-wrapper">
+        <div id="time"></div>
+
+        <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+            <h2 class="form-signin-heading">COMPTE</h2>
+
+            <div class="login-wrap">
+                <div class="user-login-info">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required"  placeholder="{{ 'security.login.username'|trans }}" autofocus>
+
+                    <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}" autofocus>
+                </div>
+                <label class="checkbox">
+                    <input type="checkbox" value="remember-me">  {{ 'security.login.remember_me'|trans }}
+                    <span class="pull-right">
+                    <a data-toggle="modal" href="#myModal"> Mode de passe oublié?</a>
+
+                </span>
+                </label>
+                <button class="btn btn-lg btn-login btn-block" type="submit" value="{{ 'security.login.submit'|trans }}">{{ 'security.login.submit'|trans }}</button>
+                {% if error %}
+                    <div >{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Modal -->
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">réinitialiser le mot de passe</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Enter votre e-mail pour réinitialiser le mot de passe.</p>
+                            <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                            <button class="btn btn-success" type="button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal -->
+
+        </form>
+    </div>
+    <script>
+        function startTime()
+        {
+            var today=new Date();
+            var h=today.getHours();
+            var m=today.getMinutes();
+            var s=today.getSeconds();
+            // add a zero in front of numbers<10
+            m=checkTime(m);
+            s=checkTime(s);
+            document.getElementById('time').innerHTML=h+":"+m+":"+s;
+            t=setTimeout(function(){startTime()},500);
+        }
+
+        function checkTime(i)
+        {
+            if (i<10)
+            {
+                i="0" + i;
+            }
+            return i;
+        }
+    </script>
+    </body>
+
+
+
+{#{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <label for="username">{{ 'security.login.username'|trans }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input type="password" id="password" name="_password" required="required" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+</form>#}
+{#{% endblock fos_user_content %}#}

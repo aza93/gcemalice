@@ -1,0 +1,119 @@
+{% extends "modules/base.html.twig" %}
+{%  block stylesheet %}
+
+    <!--dynamic table-->
+    <link href="{{ asset('js/advanced-datatable/css/demo_page.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/advanced-datatable/css/demo_table.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/data-tables/DT_bootstrap.css') }}" rel="stylesheet" />
+    {% endblock %}
+
+{% block title %}Validation{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+
+    {% block body %}
+    {% block header %}
+        {% include 'modules/header.html.twig' %}
+    {% endblock %}
+
+
+    {% block nav_hor %}
+        {% include 'modules/navi.html.twig' %}
+    {% endblock %}
+
+{% block container %}
+         <div class="col-md-11">
+                <ul class="breadcrumbs-alt">
+                    <li class="active">
+                    <li>
+                        <a  href="{{ path('post_new') }}">1. CHARGEMENT FICHIER</a>
+                    </li>
+                    <li>
+                        <a  href="#">2. INTEGRATION</a>
+                    </li>
+                      <li>
+                        <a class="current" href="#">3. VALIDATION</a>
+                    </li>
+                </ul>
+            </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Table Produits
+                    <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-cog"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                </header>
+                <div class="panel-body">
+                    <div class="adv-table">
+
+                    <div class="alert alert-success"> Les produits ont été modifier en VN .</div>
+                        {#<table  class="display table table-bordered table-striped" id="dynamic-table">#}
+                            {#<thead>#}
+                            {#<tr>#}
+                                {#<th>Code EAN</th>#}
+                                {#<th>Code FOU</th>#}
+                                {#<th>Nom Pro</th>#}
+                                {#<th>Statut</th>#}
+                                {#<th>Motif Rejet</th>#}
+                                {#<th>Commentaires</th>#}
+                            {#</tr>#}
+                            {#</thead>#}
+
+                               {#<tfoot>#}
+                            {#<tr class="gradeX">#}
+                              {#<th>Code EAN</th>#}
+                                {#<th>Code FOU</th>#}
+                                {#<th>Nom Pro</th>#}
+                                {#<th>Statut</th>#}
+                                {#<th>Motif Rejet</th>#}
+                                {#<th>Commentaires</th>#}
+                            {#</tr>#}
+                             {#</tfoot>#}
+                              {#<tbody>#}
+
+                                 {#{% for data_error in resp %}#}
+                                {#<tr>#}
+                                    {#<td>{{ data_error.EAN13 }}</td>#}
+                                    {#<td>{{ data_error.SIGFOU }}</td>#}
+                                    {#<td>{{ data_error.NOMPRO }}</td>#}
+                                    {#<td>{{ data_error.INTEG_STATUT }}</td>#}
+                                    {#<td>{{ data_error.MOTIF_REJET }}</td>#}
+                                    {#<td>{{ data_error.COMMENTAIRES }}</td>#}
+                                {#</tr>#}
+
+                            {##}
+                            {#</tbody>#}
+                        {#</table>#}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+    <!--dynamic table-->
+<script type="text/javascript" language="javascript" src="{{ asset('js/advanced-datatable/js/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" language="javascript" src="{{ asset('js/data-tables/DT_bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/easypiechart/jquery.easypiechart.js') }}"></script>
+
+<script src="{{ asset('js/sparkline/jquery.sparkline.js') }}"></script>
+<!--jQuery Flot Chart-->
+<script src="{{ asset('js/flot-chart/jquery.flot.js') }}"></script>
+<script src="{{ asset('js/flot-chart/jquery.flot.tooltip.min.js') }}"></script>
+<script src="{{ asset('js/flot-chart/jquery.flot.resize.js') }}"></script>
+<script src="{{ asset('js/flot-chart/jquery.flot.pie.resize.js') }}"></script>
+<!--dynamic table initialization -->
+<script src="{{ asset('js/dynamic_table_init.js') }}"></script>
+
+{% endblock %}

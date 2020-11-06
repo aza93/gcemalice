@@ -1,0 +1,124 @@
+{% extends "modules/base.html.twig" %}
+{%  block stylesheet %}
+
+    <!--dynamic table-->
+    <link href="{{ asset('js/advanced-datatable/css/demo_page.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/advanced-datatable/css/demo_table.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/data-tables/DT_bootstrap.css') }}" rel="stylesheet" />
+    {% endblock %}
+
+{% block title %}Validation{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+
+    {% block body %}
+    {% block header %}
+        {% include 'modules/header.html.twig' %}
+    {% endblock %}
+
+
+    {% block nav_hor %}
+        {% include 'modules/navi.html.twig' %}
+    {% endblock %}
+
+{% block container %}
+         <div class="col-md-11">
+                <ul class="breadcrumbs-alt">
+                        <li>
+                            <a  href="#">1. CHARGEMENT FICHIER </a>
+                        </li>
+                        <li>
+                            <a  href="#">2. INTEGRATION </a>
+                        </li>
+                        <li>
+                            <a class="current" href="#">4. VALIDATION </a>
+                        </li>
+                    </ul>
+            </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Resultat integration
+                    <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-cog"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                </header>
+                <div class="panel-body">
+                    <div class="adv-table">
+                    {% if erreurs.erreur_existe !=[]  %}
+                        <table  class="display table table-bordered table-striped" id="dynamic-table">
+                            <thead>
+                            <tr>
+                                <th>Motif Rejet</th>
+                            </tr>
+                            </thead>
+
+                               <tfoot>
+                            <tr class="gradeX">
+                                <th>Motif Rejet</th>
+                            </tr>
+                             </tfoot>
+                              <tbody>
+                                <td>
+                                {% for error in erreurs.erreur_existe  %}
+                                    <td>{{ error }}</td>
+                                {% endfor %}
+                                </td>
+                                <td>
+                                {% for error in erreurs.erreur_doublon  %}
+                                    <td>{{ error }}</td>
+                                {% endfor %}
+                                </td>
+                            </tbody>
+                        </table>
+                        {% elseif  erreurs.erreur_doublon !=[]  %}
+                            <table  class="display table table-bordered table-striped" id="dynamic-table">
+                            <thead>
+                            <tr>
+                                <th>Motif Rejet</th>
+                            </tr>
+                            </thead>
+                               <tfoot>
+                            <tr class="gradeX">
+                                <th>Motif Rejet</th>
+                            </tr>
+                             </tfoot>
+                              <tbody>
+                                <tr>
+                                {% for error in erreurs.erreur_doublon  %}
+                                    <td>{{ error }}</td>
+                                {% endfor %}
+                                </tr>
+                            </tbody>
+                        </table>
+                        {% else %}
+                         <div class="alert alert-success"> INTEGRATIONS EFFECTUEES AVEC SUCCES</div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+    <!--dynamic table-->
+<script type="text/javascript" language="javascript" src="{{ asset('js/advanced-datatable/js/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" language="javascript" src="{{ asset('js/data-tables/DT_bootstrap.js') }}"></script>
+
+
+<script src="{{ asset('js/sparkline/jquery.sparkline.js') }}"></script>
+{#<!--dynamic table initialization -->#}
+<script src="{{ asset('js/dynamic_table_init.js') }}"></script>
+
+{% endblock %}

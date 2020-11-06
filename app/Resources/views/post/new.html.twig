@@ -1,0 +1,64 @@
+{% extends "modules/base.html.twig" %}
+
+{% block title %}ExploitBundle:Integration:index{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumbs-alt">
+                <li>
+                    <a class="current" href="{{ path('post_new') }}">1. CHARGEMENT FICHIER</a>
+                </li>
+                <li>
+                    <a href="#">2. INTEGRATION</a>
+                </li>
+                <li>
+                    <a href="#">3. VERIFIFIER</a>
+                </li>
+                <li>
+                    <a href="#">4. VALIDATION</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">Chargement Fichier
+                    <span class="tools pull-right">
+                                 {#<a href="javascript:;" class="fa fa-times"></a>#}
+                         </span>
+                </header>
+                <div class="panel-body">
+                    <div class="position-center">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                   <div class="right"><input class="btn btn-success" type="submit" value="Création" /></div>
+                        {{ form_end(form) }}
+                    </div>
+                        <a class="btn btn-info pull-right" href="{{ path('post_index') }}">Liste Fichiers</a>
+                </div>
+            </section>
+        </div>
+    </div>
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+
+    {% endblock %}

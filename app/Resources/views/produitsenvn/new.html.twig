@@ -1,0 +1,117 @@
+{% extends "modules/base.html.twig" %}
+
+{% block title %}PRODUITS VN{% endblock %}
+
+ {% block stylesheet %}
+     <link rel="stylesheet" type="text/css" href="{{ asset('js/bootstrap-datepicker/css/datepicker.css') }}">
+ {% endblock %}
+
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumbs-alt">
+                        <li>
+                            <a class="current" href="">1. CHARGEMENT FICHIER PRODUIT</a>
+                        </li>
+                        <li>
+                            <a href="#">2. CHANGEMENT EN VN </a>
+                        </li>
+                        <li>
+                            <a href="#">4. VALIDATION</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">METTRE LES PRODUITS EN VN
+                            <span class="tools pull-right">
+                                 {#<a href="javascript:;" class="fa fa-times"></a>#}
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                                {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+                         <div class="form-group">
+                                {{ form_label(form.nom, null, {'label_attr': {'class' : 'control-label col-md-3'}}) }}
+                                {{ form_errors(form.nom) }}
+                             <div class="col-md-4 col-xs-11">
+                             {{ form_widget(form.nom, {'attr': {'class': 'col-md-4 col-xs-11'}}) }}
+                             </div>
+                         </div>
+                            <div class="form-group">
+                                {{ form_label(form.content, null, {'label_attr': {'class' : 'control-label col-md-3'}}) }}
+                                {{ form_errors(form.content) }}
+                                <div class="col-md-4 col-xs-11">
+                                    {{ form_widget(form.content, {'attr': {'class': 'col-md-4 col-xs-11'}}) }}
+                                </div>
+                            </div>
+
+                            {#<div class="form-group">#}
+                                {#{{ form_label(form.date, null, {'label_attr': {'class' : 'control-label col-md-3'}}) }}#}
+                                {#{{ form_errors(form.date) }}#}
+                                {#<div class="col-md-4 col-xs-11">#}
+                                    {#{{ form_widget(form.date, {'attr': {'class': 'form-control form-control-inline input-medium default-date-picker'}}) }}#}
+                                    {#<span class="help-block">date d'application</span>#}
+                                {#</div>#}
+                            {#</div>#}
+
+                            <div class="form-group">
+                                {{ form_label(form.file, null, {'label_attr': {'class' : 'control-label col-md-3'}}) }}
+                                {{ form_errors(form.file) }}
+                                <div class="col-md-6 col-xs-11">
+                                    {{ form_widget(form.file, {'attr': {'class': 'col-md-8 col-xs-11'}}) }}
+                                </div>
+                            </div>
+
+                                <div class="col-lg-offset-6 col-lg-10">
+                                    <input class="btn btn-success" type="submit" value="Envoyer" />
+                                </div>
+                                {{ form_end(form) }}
+                            <a class="btn btn-info pull-right" href="{{ path('post_index') }}">Liste Fichiers</a>
+                        </div>
+
+                    </section>
+                {#</div>#}
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+
+
+<script src="{{ asset('js/bootstrap-switch.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/fuelux/js/spinner.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-fileupload/bootstrap-fileupload.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-wysihtml5/wysihtml5-0.3.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-wysihtml5/bootstrap-wysihtml5.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-daterangepicker/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-colorpicker/js/bootstrap-colorpicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-timepicker/js/bootstrap-timepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-multi-select/js/jquery.multi-select.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-multi-select/js/jquery.quicksearch.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('js/jquery-tags-input/jquery.tagsinput.js') }}"></script>
+
+<script src="{{ asset('js/jquery-tags-input/jquery.tagsinput.js') }}"></script>
+
+
+{% endblock %}

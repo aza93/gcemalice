@@ -1,0 +1,91 @@
+{% extends "modules/base.html.twig" %}
+{%  block stylesheet %}
+
+    <!--dynamic table-->
+    <link href="{{ asset('js/advanced-datatable/css/demo_page.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/advanced-datatable/css/demo_table.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/data-tables/DT_bootstrap.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Ereurs dans Csv{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">Erreurs sur le fichier
+                            <span class="tools pull-right">
+                                 {#<a href="javascript:;" class="fa fa-times"></a>#}
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            <div class="position-center">
+                                {{ form_start(delete_form) }}
+                                <input class="btn btn-danger pull-right" type="submit" value="Supprimer le fichier">
+                                {{ form_end(delete_form) }}
+                                <table  class="display table table-bordered table-striped" id="dynamic-table">
+                                    <tr>
+                                    <th>Emplacement de l'erreur</th>
+                                        <th> Corrections possible</th>
+                                    </tr>
+                                    {% for erreur_e in verif_entet_error  %}
+                                        <tr>
+                                            <td>
+                                                {{ erreur_e }}
+                                            </td>
+                                            <td>
+                                                <p> Les colonnes sont diffèrent du fichier type  </p>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    {% for erreur_n in erreur_num  %}
+                                        <tr>
+                                            <td>
+                                                {{ erreur_n }}
+                                            </td>
+                                            <td>
+                                                <p> Doit ètre un numérique   </p>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    {% for erreur_d in erreur_date  %}
+                                    <tr>
+                                        <td>
+                                            {{ erreur_d }}
+                                        </td>
+                                        <td>
+                                            <p> Vérifier le Format DD/MM/YYYY et Mettre les champs en text </p>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+        <script type="text/javascript" language="javascript" src="{{ asset('js/advanced-datatable/js/jquery.dataTables.js') }}"></script>
+
+
+    {% endblock %}

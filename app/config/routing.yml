@@ -1,0 +1,19 @@
+exploit:
+    resource: "@ExploitBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+upload:
+    resource: "@UploadBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+_errors:
+    resource: '@TwigBundle/Resources/config/routing/errors.xml'
+    prefix: /_error
+
+#app:
+#    resource: '@AppBundle/Controller/'
+#    type: annotation

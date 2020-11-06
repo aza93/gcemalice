@@ -1,0 +1,88 @@
+{% extends "modules/base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+            <div class="col-md-11">
+                <ul class="breadcrumbs-alt">
+                    <li class="active">
+                    <li>
+                        <a  href="#">1. CHARGEMENT FICHIER</a>
+                    </li>
+                    <li>
+                        <a  href="#">2. INTEGRATION</a>
+                    </li>
+                    <li>
+                        <a class="current" href="#">3. VERIFIFIER</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('validate', {'id' : id, 'sequence' : errors_all.sequence}) }}">4. VALIDATION</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <a class="btn btn-success" href="{{ path('validate', {'id' : id, 'sequence' : errors_all.sequence}) }}">Validation</a>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <section class="panel">
+                        <header class="panel-heading">Validation Fichier
+                            <span class="tools pull-right">
+                                 <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            {% for error in errors_all.errors %}
+                                {#{% for errorIntegr in error %}#}
+                                       {{ error }} <br>
+                                {#{% endfor %}#}
+                            {% endfor%}
+                            <table class="table  table-hover general-table">
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section class="panel">
+                        <header class="panel-heading">Produits Rejeté
+                            <span class="tools pull-right">
+                                 <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            {% for prononinteg in errors_all.erreur %}
+                                {% for errorNonItegr in prononinteg %}
+                                 <div class="alert-danger">{{ errorNonItegr }} </div>
+                                {% endfor %}
+                            {% endfor%}
+
+                            <table class="table  table-hover general-table">
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+{% endblock %}

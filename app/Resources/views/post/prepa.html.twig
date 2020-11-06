@@ -1,0 +1,95 @@
+{% extends "modules/base.html.twig" %}
+
+{% block title %}Integration{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumbs-alt">
+                            <li class="active">
+                            <li>
+                                <a  href="#">1. CHARGEMENT FICHIER</a>
+                            </li>
+                            <li>
+                                <a class="current" href="{{ path('post_new') }}">2. INTEGRATION</a>
+                            </li>
+                            <li>
+                                <a href="#">3. VERIFIFIER</a>
+                            </li>
+                            <li>
+                                <a href="#">4. VALIDATION</a>
+                            </li>
+
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">Intègration Fichier
+                            <span class="tools pull-right">
+                                 <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+
+                              <table class="table  table-hover general-table">
+                                <tbody>
+                                {#<tr>#}
+                                    {#<th>Id</th>#}
+                                    {#<td>{{ post.id }}</td>#}
+                                {#</tr>#}
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ post.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>contenu</th>
+                                    <td>{{ post.content }}</td>
+                                </tr>
+                                <tr>
+                                    <th>nom du fichier</th>
+                                    {%  set name =  post.filename|split('_')%}
+                                    <td>{{ name[1] }}</td>
+                                </tr>
+                                {#<tr>#}
+                                    {#<th>Userid</th>#}
+                                    {#<td>{{ post.userId }}</td>#}
+                                {#</tr>#}
+                                <tr>
+                                    <th>Statut</th>
+                                    <td>{{ post.statut }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Updateat</th>
+                                    <td>{% if post.updateAt %}{{ post.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <a class="btn btn-success" href="{{ path('integ_csv',{'id' : post.id, 'filename' : post.filename }) }}" > Integration </a>
+
+                        </div>
+                    </section>
+                 </div>
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+{% endblock %}

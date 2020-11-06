@@ -1,0 +1,96 @@
+{#{% extends "@FOSUser/layout.html.twig" %}#}
+
+     {% extends "modules/base.html.twig" %}
+            {% trans_default_domain 'FOSUserBundle' %}
+{% block title %}Confirmation{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+    {% block body %}
+    {% block header %}
+    {% include 'modules/header.html.twig' %}
+    {% endblock %}
+         {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+    {% block container %}
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">Confirmation d'enregistrement
+                    <span class="tools pull-right">
+                                 <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                </header>
+                <div class="panel-body">
+
+            {% block fos_user_content %}
+                <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                {% if targetUrl %}
+                    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                {% endif %}
+            {% endblock fos_user_content %}
+                </div>
+            </section>
+        </div>
+    </div>
+
+        {% endblock %}
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+            {#{% trans_default_domain 'FOSUserBundle' %}#}
+
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+                {#{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |#}
+                {#<a href="{{ path('fos_user_security_logout') }}">#}
+                    {#{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}#}
+                {#</a>#}
+            {#{% else %}#}
+
+                {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+            {#{% endif %}#}
+            {#</div>#}
+
+            {#{% if app.request.hasPreviousSession %}#}
+                {#{% for type, messages in app.session.flashbag.all() %}#}
+                    {#{% for message in messages %}#}
+                        {#<div class="flash-{{ type }}">#}
+                            {#{{ message }}#}
+                        {#</div>#}
+                    {#{% endfor %}#}
+                {#{% endfor %}#}
+            {#{% endif %}#}
+
+            {#<div>#}
+                {#{% block fos_user_content %}#}
+                {#{% endblock fos_user_content %}#}
+            {#</div>#}
+
+            {#{% block fos_user_content %}#}
+            {#<p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>#}
+            {#{% if targetUrl %}#}
+            {#<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>#}
+            {#{% endif %}#}
+            {#{% endblock fos_user_content %}#}
+
+
+        {#{% endblock %}#}
+    {#{% endblock %}#}
+
+    {#{% block javascripts %}#}
+
+{#{% endblock %}#}

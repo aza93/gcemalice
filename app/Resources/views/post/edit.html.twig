@@ -1,0 +1,40 @@
+{% extends "modules/base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+            <h1>Fichier Editer</h1>
+
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+
+            <div class="right"><input class="btn btn-success" type="submit" value="Modifier" /></div>
+
+            {{ form_end(edit_form) }}
+
+            <a class="btn btn-info pull-right" href="{{ path('post_index') }}">Liste Fichiers</a>
+
+                    {{ form_start(delete_form) }}
+            <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+
+                    {{ form_end(delete_form) }}
+
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+{% endblock %}

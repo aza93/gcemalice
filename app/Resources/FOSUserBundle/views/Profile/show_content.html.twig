@@ -1,0 +1,55 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends 'modules/base.html.twig' %}
+
+    {% block stylesheet%}
+
+    {% endblock %}
+
+    {% block body %}
+
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+
+<div class="row">
+    <div class="col-md-6">
+
+                            <section class="panel">
+                                <div class="panel-body profile-information">
+                                    <div class="col-md-3">
+                                        <div class="profile-pic text-center">
+                                            <img src="" alt=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="profile-desk">
+                                            <h1>{{ user.username }}</h1>
+                                            <span class="text-muted"></span>
+                                            <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p><br>
+                                            <a href="{{ asset('profile/edit') }}" class="btn btn-primary">Editer Profile</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                </div>
+
+                            </section>
+    </div>
+
+</div>
+
+
+        {% endblock %}
+
+    {% endblock %}
+
+    {% block javascripts %}
+
+    {% endblock %}
+

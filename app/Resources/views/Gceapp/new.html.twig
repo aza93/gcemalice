@@ -1,0 +1,130 @@
+
+
+{% extends "modules/base.html.twig" %}
+
+{% block title %}Invalidation NCF{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+    <div class="row">
+
+        <div class="col-sm-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    Supprimer une NCF
+                    <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-up"></a>
+                        {#<a href="javascript:;" class="fa fa-cog"></a>#}
+                        <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                </header>
+                <div class="panel-body" style="display: none">
+
+                    <div class="position-center">
+                        {{ form_start(form) }}
+
+                        <div class="col-sm-6">
+                            Numéro NCF :
+                            {{ form_widget(form.numncf) }}
+                            {{ form_errors(form.numncf) }}
+                        </div>
+                        <div style="display:none">
+                            {{ form_rest(form) }}
+                        </div>
+                        <div class="right"><br>
+                            <input class="btn btn-success" type="submit" value="Envoyer" />
+                        </div>
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="col-sm-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    RENVOI DES COMMANDES EMAIL
+                    <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-up"></a>
+                        {#<a href="javascript:;" class="fa fa-cog"></a>#}
+                        <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                </header>
+                <div class="panel-body" style="display: none">
+                    <div class="position-center">
+                        {{ form_start(form_renvoicmd) }}
+                        <div class="col-sm-6">
+                            Numéro de commande :
+                            {{ form_widget(form_renvoicmd.cmdrenvoi) }}
+                            {{ form_errors(form_renvoicmd.cmdrenvoi) }}
+                        </div>
+                        <div style="display:none">
+                            {{ form_rest(form_renvoicmd) }}
+                        </div>
+                        <div class="right"><br>
+                            <input class="btn btn-success" type="submit" value="Envoyer" />
+                        </div>
+                        {{ form_end(form_renvoicmd) }}
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-sm-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    IMPRESSION DES ETIQUETES MAGASIN
+                    <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-up"></a>
+                        {#<a href="javascript:;" class="fa fa-cog"></a>#}
+                        <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                </header>
+                <div class="panel-body" style="display: none">
+                    <div class="position-center">
+                        {{ form_start(form_impre) }}
+                        <div class="col-sm-6">
+                            Magasin :
+                            {{ form_widget(form_impre.edimag) }}
+                            {{ form_errors(form_impre.edimag) }}
+                        </div>
+                        <div style="display:none">
+                            {{ form_rest(form_impre) }}
+                        </div>
+                        <div class="right"><br>
+                            <input class="btn btn-success" type="submit" value="Envoyer" />
+                        </div>
+                        {{ form_end(form_impre) }}
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+
+    {% endblock %}
+
+

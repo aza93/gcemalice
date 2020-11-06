@@ -1,0 +1,71 @@
+
+
+{% extends "modules/base.html.twig" %}
+
+{% block title %}IMPRESSION GONDOLE MAG{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+            <div class="row">
+
+                <div class="col-sm-6 offset-by-one">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            IMPRESSION GONDOLE POUR MAGASINS
+                            <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-up"></a>
+                                {#<a href="javascript:;" class="fa fa-cog"></a>#}
+                                {#<a href="javascript:;" class="fa fa-times"></a>#}
+                         </span>
+                        </header>
+                        <form action="{{ path('mag_index') }}" method="POST">
+                            <div class="position-center">
+                                <div class="col-sm-6">
+                                    Magasin :
+                                </div>
+                                   <select class="form-control input-sm m-bot15" name="magasin" required >
+                                       <option value=""></option>
+                                       {% for mags in mag %}
+                                           {{ mags.code_mag }}
+                                           {% if mags.code_mag == 'CAM' %}
+                                            <option value="TOUS"> TOUS </option>
+                                            <option value="{{ mags.code_mag }}">{{ mags.code_mag }}</option>
+                                           {% else %}
+                                               <option value="{{ mags.code_mag }}">{{ mags.code_mag }}</option>
+                                           {% endif %}
+                                       {% endfor %}
+                                   </select>
+
+                                    <div class="right"><br>
+                                        <input class="btn btn-success" type="submit" value="Envoyer" />
+                                    </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+
+
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+
+    {% endblock %}
+
+

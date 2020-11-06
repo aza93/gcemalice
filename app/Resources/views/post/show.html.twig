@@ -1,0 +1,79 @@
+{% extends "modules/base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+ {% block active_nav %}
+<a class="active" href="">
+    {% endblock %}
+
+
+    {% block body %}
+        {% block header %}
+            {% include 'modules/header.html.twig' %}
+        {% endblock %}
+
+
+        {% block nav_hor %}
+            {% include 'modules/navi.html.twig' %}
+        {% endblock %}
+
+        {% block container %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">Informations Fichier
+                            <span class="tools pull-right">
+                                 <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+
+                              <table class="table  table-hover general-table">
+                                <tbody>
+                                {#<tr>#}
+                                    {#<th>Id</th>#}
+                                    {#<td>{{ post.id }}</td>#}
+                                {#</tr>#}
+                                {#<tr>#}
+                                    <th>Nom</th>
+                                    <td>{{ post.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Contenu</th>
+                                    <td>{{ post.content }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom du fichier</th>
+                                    {%  set name =  post.filename|split('_')%}
+                                    <td>{{ name[1] }}</td>
+                                </tr>
+                                {#<tr>#}
+                                    {#<th>Userid</th>#}
+                                    {#<td>{{ post.userId }}</td>#}
+                                {#</tr>#}
+                                <tr>
+                                    <th>Statut</th>
+                                    <td>{{ post.statut }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date modif.</th>
+                                    <td>{% if post.updateAt %}{{ post.updateAt|date('d-m-Y H:i:s') }}{% endif %}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a class="btn btn-warning" href="{{ path('post_index') }}"> Retour Liste</a>
+                         <a class="btn btn-primary" href="{{ path('post_edit', { 'id': post.id }) }}"> Modifier </a>
+                        {{ form_start(delete_form) }}
+                        <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+                        {{ form_end(delete_form) }}
+                    </section>
+                 </div>
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+{% endblock %}

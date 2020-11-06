@@ -1,0 +1,152 @@
+<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->
+        <div class="leftside-navigation">
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a href="{{ path('exploit_homepage_index') }}" title="Anigestion index"
+                            {% if app.request.get('_route') == 'exploit_homepage_idex' %} class="active"
+                            {% endif %}>
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                </li>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <li class="sub-menu">
+                    <a href="javascript:;" {% if app.request.get('_route') in ['GceConsultIndex' , 'GceDbInfo', 'formgce_gce','EdiConsult'] %} class="active"
+                            {% endif %}
+                            {% if app.request.get('_route') == 'GceConsultIndex'  %} class="active"
+                            {% endif %}>
+                        <i class="fa fa-laptop"></i>
+                        <span>GCE</span>
+                    </a>
+
+                    <ul class="sub">
+
+                        <li{% if app.request.get('_route') == 'GceConsultIndex' %} class="active"
+                                {% endif %}> <a href="{{ path('GceConsultIndex') }}" title="General">
+                                General</a></li>
+
+                        <li {% if app.request.get('_route') == 'GceDbInfo' %} class="active"
+                                {% endif %}> <a href="{{ path('GceDbInfo') }}" title="Info Tablespace">
+                                Info DB GCE</a></li>
+
+                        <li {% if app.request.get('_route') == 'formgce_gce' %} class="active"
+                                {% endif %}> <a href="{{ path('formgce_gce') }}" title="GceApp">
+                                Gestion GCE</a>
+                        </li>
+
+                        <li {% if app.request.get('_route') == 'EdiConsult' %} class="active"
+                                {% endif %}> <a href="{{ path('EdiConsult') }}" title="Log Editique erreurs">
+                                Infos Log</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+                {% if is_granted('ROLE_MAG') or is_granted('ROLE_SUPER_ADMIN') %}
+                <li class="sub-menu">
+                    <a href="javascript:;" {% if app.request.get('_route') in ['GceConsultIndex' , 'GceDbInfo', 'formgce_gce','EdiConsult'] %} class="active"
+                    {% endif %}
+                            {% if app.request.get('_route') == 'mag_index'  %} class="active"
+                            {% endif %}>
+                        <i class="fa fa-laptop"></i>
+                        <span>Magasin-App</span>
+                    </a>
+
+                    <ul class="sub">
+
+                        <li{% if app.request.get('_route') == 'mag_index' %} class="active"
+                                {% endif %}> <a href="{{ path('mag_index') }}" title="General">
+                                Impressions </a></li>
+
+
+                    </ul>
+                </li>
+                {% endif %}
+
+                {% if is_granted('ROLE_CAM') or is_granted('ROLE_SUPER_ADMIN') %}
+                {#Preparation GCE#}
+                <li class="sub-menu">
+                    <a href="javascript:;" {% if app.request.get('_route')in ['post_new' , 'integ_pa' , 'integ_pv', 'modif_vn', 'modif_gamme']   %} class="active"
+                    {% endif %}>
+                        <i class="fa fa-book"></i>
+                        <span>Créations et MAJ Produits </span>
+                    </a>
+                    <ul class="sub">
+                        <li{% if app.request.get('_route') == 'post_new' %} class="active"
+                                {% endif %}> <a href="{{ path('post_new') }}" title="Création produits en masse">Créations Produits en Masse
+                                </a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li{% if app.request.get('_route') == 'integ_pa' %} class="active"
+                                {% endif %}> <a href="{{ path('integ_pa') }}" title="Inetgration PA">Intègration PA
+                            </a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li{% if app.request.get('_route') == 'integ_pv' %} class="active"
+                                {% endif %}> <a href="{{ path('integ_pv') }}" title="Inetgration PV">Intègration PV
+                            </a></li>
+                    </ul>
+                    <ul class="sub">
+                       <li{% if app.request.get('_route') == 'modif_vn' %} class="active"
+                                {% endif %}> <a href="{{ path('modif_vn') }}" title="Mettre les produits en PV">Produits en VN
+                            </a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li{% if app.request.get('_route') == 'modif_gamme' %} class="active"
+                                {% endif %}> <a href="{{ path('modif_gamme') }}" title="Changer de Gamme">Changer de GAMME
+                            </a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                {#<li class="sub-menu">#}
+                    {#<a href="javascript:;"  {% if app.request.get('_route') == 'exploit_gce_integration' %} class="active"#}
+                        {#{% endif %}>#}
+                        {#<i class="fa fa-book"></i>#}
+                        {#<span>INTEGRATION</span>#}
+                    {#</a>#}
+                    {#<ul class="sub">#}
+                        {#<li{% if app.request.get('_route') == 'exploit_gce_integration' %} class="active"#}
+                                {#{% endif %}>#}
+                            {#<a href="{{ path('exploit_gce_integration') }}" title="Integration">Integration Produits en Masse </a>#}
+                           {#</li>#}
+
+                    {#</ul>#}
+                    {#<ul class="sub">#}
+                        {#<li><a href="general.html">Integration PA</a></li>#}
+
+                    {#</ul>#}
+                    {#<ul class="sub">#}
+                        {#<li><a href="general.html">Integration PV</a></li>#}
+
+                    {#</ul>#}
+                {#</>#}
+                {#<li class="sub-menu">#}
+                    {#<a href="javascript:;">#}
+                        {#<i class="fa fa-envelope"></i>#}
+                        {#<span>Mail </span>#}
+                    {#</a>#}
+                    {#<ul class="sub">#}
+                        {#<li><a href="mail.html">General</a></li>#}
+
+                    {#</ul>#}
+                {#</li>#}
+                {#<li class="sub-menu">#}
+                    {#<a href="javascript:;">#}
+                        {#<i class=" fa fa-bar-chart-o"></i>#}
+                        {#<span>WIKI</span>#}
+                    {#</a>#}
+                    {#<ul class="sub">#}
+                        {#<li><a href="morris.html">General</a></li>#}
+
+                    {#</ul>#}
+                {#</li>#}
+
+            </ul>            </div>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->
