@@ -39,3 +39,4 @@ Thumbs.db
 # folders #
 ############
 /vendor/*
+/var/*
