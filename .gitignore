@@ -40,3 +40,10 @@ Thumbs.db
 ############
 /vendor/*
 /var/*
+
+# Ignore All (xlsx,csv) files
+*.xlsx
+*.csv
+
+# DO-NOT ignore specific file
+!DBB/Tool Input.xlsx
