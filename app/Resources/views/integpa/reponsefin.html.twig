@@ -52,31 +52,36 @@
                 <div class="panel-body">
                     <div class="adv-table">
                     {% if erreurs.erreur_existe !=[]  %}
-                        <table  class="display table table-bordered table-striped" id="dynamic-table">
-                            <thead>
-                            <tr>
-                                <th>Motif Rejet</th>
-                            </tr>
-                            </thead>
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                        <thead>
+                        <tr>
+                        <th>Motif Rejet</th>
+                        </tr>
+                        </thead>
 
-                               <tfoot>
-                            <tr class="gradeX">
-                                <th>Motif Rejet</th>
-                            </tr>
-                             </tfoot>
-                              <tbody>
-                                <td>
+                        <tfoot>
+                        <tr class="gradeX">
+                        <th>Motif Rejet</th>
+                        </tr>
+                        </tfoot>
+
+                        <tbody>
+                            <td>
                                 {% for error in erreurs.erreur_existe  %}
+                                <tr>
                                     <td>{{ error }}</td>
+                                </tr>
                                 {% endfor %}
-                                </td>
-                                <td>
+                            </td>
+                            <td>
                                 {% for error in erreurs.erreur_doublon  %}
+                                <tr>
                                     <td>{{ error }}</td>
+                                </tr>
                                 {% endfor %}
-                                </td>
-                            </tbody>
-                        </table>
+                            </td>
+                        </tbody>
+                    </table>
                         {% elseif  erreurs.erreur_doublon !=[]  %}
                             <table  class="display table table-bordered table-striped" id="dynamic-table">
                             <thead>
